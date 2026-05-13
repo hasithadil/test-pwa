@@ -185,8 +185,7 @@ export function ExperienceSection() {
             Work Experience
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
-            Professional experience building enterprise-grade software in the
-            FinTech domain.
+            Professional experience building enterprise-grade software.
           </p>
           <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-[var(--cyan)] to-transparent" />
         </motion.div>
