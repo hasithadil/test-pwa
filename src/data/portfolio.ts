@@ -30,7 +30,7 @@ export const education = [
   {
     institution: "University of Colombo School of Computing (UCSC)",
     degree: "BSc in Computer Science",
-    details: "GPA: 3.1 / 4.0",
+    //details: "GPA: 3.1 / 4.0",
     location: "Sri Lanka",
     period: "2023 — 2026",
   },
