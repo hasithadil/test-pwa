@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { SerwistProvider } from "@serwist/next/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
@@ -19,6 +20,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false, // Makes the website feel like a native app (stops pinch-to-zoom)
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
 export const metadata: Metadata = {
   // Base URL used to resolve relative paths in og:image, twitter:image, etc.
@@ -98,6 +110,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_CONFIG.url,
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -118,14 +131,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <Navbar />
-          {children}
-          <Footer />
+          <SerwistProvider swUrl="/sw.js" disable={process.env.NODE_ENV === "development"}>
+            <Navbar />
+            {children}
+            <Footer />
 
-          {/* ── Global UI overlays (render above everything) ── */}
-          <CustomCursor />
-          <ScrollToTop />
-          <LoadingScreen />
+            {/* ── Global UI overlays (render above everything) ── */}
+            <CustomCursor />
+            <ScrollToTop />
+            <LoadingScreen />
+          </SerwistProvider>
         </ThemeProvider>
       </body>
     </html>
