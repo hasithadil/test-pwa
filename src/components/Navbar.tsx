@@ -6,17 +6,18 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { InstallButton } from "@/components/shared/InstallButton";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { personalInfo } from "@/data/portfolio";
 
 // ─── Nav link definitions ─────────────────────────────────────
 const NAV_LINKS = [
-  { label: "Home",       href: "#home" },
-  { label: "About",      href: "#about" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Skills",     href: "#skills" },
-  { label: "Projects",   href: "#projects" },
-  { label: "Contact",    href: "#contact" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.slice(1));
@@ -117,7 +118,7 @@ function MobileMenu({
   activeSection: string;
 }) {
   const socials = [
-    { icon: GitHubIcon, href: personalInfo.socials.github,  label: "GitHub",   external: true },
+    { icon: GitHubIcon, href: personalInfo.socials.github, label: "GitHub", external: true },
     { icon: LinkedInIcon, href: personalInfo.socials.linkedin, label: "LinkedIn", external: true },
     { icon: Mail, href: personalInfo.socials.email, label: "Email", external: false },
   ] as const;
@@ -285,6 +286,7 @@ export function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2.5">
+            <InstallButton />
             <ThemeToggle />
 
             {/* Mobile hamburger */}
