@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "npx serwist build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -27,10 +28,12 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.11",
+    "@serwist/cli": "^9.5.12",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
